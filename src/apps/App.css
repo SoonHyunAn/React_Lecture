@@ -1,10 +1,10 @@
-.photo{
-  width: 200px; height: 200px;
-  border-radius: 100%; 
+.photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
 }
 
-.card
-{
+.card {
   width: 300px;
   text-align: center;
   padding: 10px;
@@ -17,11 +17,28 @@
   font-size: 5rem;
 }
 
-input, button {
+input,
+button {
   padding: 5px;
   margin: 5px;
 }
 
-td{
+td {
   padding: 5px;
+}
+
+button {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.result {
+  height: 50px;
+  text-align: right;
+  padding: 0px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: gainsboro;
 }
