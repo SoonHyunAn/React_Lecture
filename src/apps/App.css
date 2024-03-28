@@ -2,3 +2,22 @@
   width: 200px; height: 200px;
   border-radius: 100%; 
 }
+
+.card
+{
+  width: 300px;
+  text-align: center;
+  padding: 10px;
+  background-color: #ebebeb;
+  border-radius: 20px;
+  margin: 30px;
+}
+
+.count {
+  font-size: 5rem;
+}
+
+input, button {
+  padding: 5px;
+  margin: 5px;
+}
