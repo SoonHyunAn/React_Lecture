@@ -10,30 +10,31 @@ export default function User() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); {/* submit button을 누르면 페이지가 자동적으로 바뀌는 것을 방지 */ }
-    
+
     // 강사님 코드
-    // const existUser = users.find(val => val.id == form.id);
+    const existUser = users.find(user => user.id === form.id);
     // const newUsers = [];
-    // if (existUser) {// 수정
+    if (existUser) {// 수정
+         setUsers(users.map(user => user.id === form.id ? form : user)); // 16, 19~24번 코드 대체
     //   for (let val of users)
     //     if (val.id != form.id)
     //       newUsers.push(form);
     //     else
     //       newUsers.push(val);
     //     setUsers(newUsers);
-    // }   else   // 추가
-    //     setUsers([...users, form]);
+    }   else   // 추가
+        setUsers([...users, form]);
 
     // 내 코드
-    for (let user of users) {
-      if (form.id == user.id) { // 수정
-        user.name = form.name;
-        user.email = form.email;
-        setUsers([...users]);
-        break;
-      } else                    // 추가
-        setUsers([...users, form]);
-    }
+    // for (let user of users) {
+    //   if (form.id == user.id) { // 수정
+    //     user.name = form.name;
+    //     user.email = form.email;
+    //     setUsers([...users]);
+    //     break;
+    //   } else                    // 추가
+    //     setUsers([...users, form]);
+    // }
   }
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,7 +75,7 @@ export default function User() {
 
       <button onClick={() => {
         const id = prompt("계정 삭제");
-        setUsers(users.filter(users => users.id != id));
+        setUsers(users.filter(users => users.id !== id));
       }}>삭제</button>
 
 
