@@ -1,32 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../apps/App.css';
-import { FaRegTrashAlt } from "react-icons/fa";
+import AddTodo from './AddTodo';
+import Todo from './Todo';
 
-export default function TodoList() {
-  const [text, setText] = useState('');
-  const [todos, setTodos] = useState([
-    { id: '1234', work: '공부하기', status: 'active' },
-    { id: '4567', work: '청소하기', status: 'active' }
-  ]);
+export default function TodoList({filter}) {
+  const initData = readFromLocalStorage()
+  const [todos, setTodos] = useState(initData);
+  const handleUpdate = updated => 
+    setTodos(todos.map(todo => (todo.id === updated.id) ? updated : todo));
+  const handleDelete = deleted =>
+    setTodos(todos.filter(todo => todo.id !== deleted.id));
+  const handleAdd = todo => setTodos([...todos, todo]);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const filteredTodos = getFilteredTodos(todos, filter);
   return (
     <div>
       <ul>
         {
-          todos.map(todo => (
-            <li>
-              <input type="checkbox" id='{todo.id}' checked={todo.status === 'completed'}
-                onChange={handleChange} />
-              <label htmlFor="{todo.id}">{todo.work}</label>
-            <button onClick={handleDelete}><FaRegTrashAlt /></button>
-            </li>
-          )
-          )
+          filteredTodos.map(todo => (
+            <Todo todo={todo} onUpdate={handleUpdate} onDelete={handleDelete} />
+          ))
         }
       </ul>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder='할 일을 입력하세요.' value={text} onChange={handleAdd}/>
-        <button></button>
-      </form>
+      <AddTodo onAdd={handleAdd} />
     </div>
   );
+}
+
+function readFromLocalStorage() {
+  const todos = localStorage.getItem('todos');
+  console.log(todos);
+  return todos !== "[object JSON]" ? JSON.parse(todos) : [];
+}
+
+function getFilteredTodos(todos, filter) {
+  if (filter === 'all')
+    return todos;
+  return todos.filter(todo => todo.status === filter);
 }
