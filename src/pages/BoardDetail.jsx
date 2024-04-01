@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 export default function BoardDetail() {
   const { bid } = useParams();
   return (
-<div style={{margin: '20px'}}>
-  BoardDetail Page, bid = {bid}
-</div>
-  );
+    <div style={{margin: '20px'}}>
+      BoardDetail page, bid={bid}
+    </div>
+  )
 }

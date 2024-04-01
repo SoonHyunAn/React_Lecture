@@ -5,17 +5,17 @@ export default function Board() {
   const [text, setText] = useState('');
   const navigate = useNavigate();
   const handleSubmit = e => {
-    e.prebentDefault();
+    e.preventDefault();
     navigate(`/board/${text}`);
     setText('');
   }
   return (
-    <div style={{ margin: '20px' }}>
-      Board Page
+    <div style={{margin: '20px'}}>
+      Board page
       <form onSubmit={handleSubmit}>
-        <input type="text"  name="bid" value={text} placeholder="id를 입력하세요" 
-        onChange={e => {setText(e.target.value)}}/>
+        <input type="text" name="bid" value={text} placeholder="id를 입력하세요."
+          onChange={e => {setText(e.target.value)}} />
       </form>
     </div>
-  );
+  )
 }
