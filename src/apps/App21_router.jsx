@@ -3,6 +3,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import Board from '../pages/Board';
 import Root from '../pages/Root';
+import BoardDetail from '../pages/BoardDetail';
+
 
 const router = createBrowserRouter([{
   path: '/',
@@ -11,6 +13,7 @@ const router = createBrowserRouter([{
   children: [
     {index : true, element: <Home />},
     {path: '/board', element: <Board />},
+    {path: '/board/:bid', element: <BoardDetail />}, // 동적 라우팅 구조
   ]
 
 }] );
