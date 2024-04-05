@@ -12,11 +12,13 @@ import Tables from './mui/Tables'
 import DataTable from './mui/DataTable'
 import Alert from './mui/Alert'
 import AppBar from './mui/AppBar'
+import Cards from './mui/Cards'
+import TemporaryDrawer from './mui/TemporaryDrawer'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div style={{marginTop: '40px', marginLeft: '20px'}}>
+    <div style={{marginTop: '40px', marginLeft: '20px', marginRight: '20px'}}>
       <AppBar />
       <hr />
       <Buttons />
@@ -30,6 +32,10 @@ root.render(
       <Tables /><DataTable />
       <hr />
       <Alert />
+      <hr />
+      <Cards />
+      <hr />
+      <TemporaryDrawer />
       <br /><br /><br /><br /><br /><br />
     </div>
   </React.StrictMode>
